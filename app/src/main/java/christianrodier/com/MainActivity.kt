@@ -16,6 +16,8 @@ import android.os.Build
 import android.os.PersistableBundle
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.databinding.DataBindingUtil
+import christianrodier.com.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception
 import java.text.SimpleDateFormat
@@ -29,6 +31,8 @@ import java.util.concurrent.TimeUnit
 
 
 class MainActivity : AppCompatActivity()  {
+
+    private lateinit var binding: ActivityMainBinding
 
     lateinit var etYear: EditText
     lateinit var tvAge: TextView
@@ -53,7 +57,9 @@ class MainActivity : AppCompatActivity()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+       // setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
 
 
 
@@ -73,54 +79,54 @@ class MainActivity : AppCompatActivity()  {
         button8 = findViewById(R.id.button8)
         button9 = findViewById(R.id.button9)
 
+
         buttonback = findViewById(R.id.buttonBack)
 
-        button0.setOnClickListener {
+
+        binding.button0.setOnClickListener{
             etYear.append(button0.text)
         }
 
-        button1.setOnClickListener {
+       binding.button1.setOnClickListener {
             etYear.append(button1.text)
         }
 
-        button2.setOnClickListener{
+        binding.button2.setOnClickListener{
             etYear.append(button2.text)
         }
 
-        button3.setOnClickListener{
+        binding.button3.setOnClickListener{
             etYear.append(button3.text)
         }
 
-        button4.setOnClickListener{
+        binding.button4.setOnClickListener{
             etYear.append(button4.text)
         }
 
-        button5.setOnClickListener{
+        binding.button5.setOnClickListener{
             etYear.append(button5.text)
         }
 
-        button6.setOnClickListener{
+        binding.button6.setOnClickListener{
             etYear.append(button6.text)
         }
 
-        button7.setOnClickListener{
+        binding.button7.setOnClickListener{
             etYear.append(button7.text)
         }
 
-        button8.setOnClickListener{
+        binding.button8.setOnClickListener{
             etYear.append(button8.text)
         }
 
-        button9.setOnClickListener{
+        binding.button9.setOnClickListener{
             etYear.append(button9.text)
         }
 
-        buttonback.setOnClickListener{
+        binding.buttonBack.setOnClickListener{
             etYear.setText(etYear.text.dropLast(1))
         }
 
-
-        //tvAge.setText("")
     }
 
 
@@ -133,30 +139,6 @@ class MainActivity : AppCompatActivity()  {
 
 
         var solution =  currentYear.get(Calendar.YEAR) - etYear.text.toString().toInt()
-
-//        try {
-//
-//            var sdf = SimpleDateFormat("MM/DD/yyyy", Locale.ENGLISH)
-//
-//            var birthDate = sdf.parse(etYear.text.toString())
-//
-//            var todaysDate = sdf.parse(LocalDate.now().format(DateTimeFormatter.ofPattern("MM/DD/yyyy")))
-//
-//                //LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM/DD/yyyy"))
-//
-//            var timeDiff = todaysDate.compareTo(birthDate)
-//
-//           // var diff = (TimeUnit.DAYS.convert(timeDiff,TimeUnit.DAYS) / 365).toInt()
-//
-//           // tvAge.setText(diff)
-//
-//           Toast.makeText(applicationContext, timeDiff, Toast.LENGTH_SHORT).show()
-//
-//            Log.e("btnCalcClick", timeDiff.toString())
-//
-//        } catch (ex: Exception){
-//            Toast.makeText(applicationContext, ex.message, Toast.LENGTH_SHORT).show()
-//        }
 
 
         if(solution >= 0){
